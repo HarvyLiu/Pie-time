@@ -45,6 +45,9 @@ Or bring back the PNG: `Pillow` compress with `Image.save("bg.png", optimize=Tru
 - Python 3.12+
 - `streamlit==1.64.0` (see `requirements.txt`)
 
+## Reference (Bg source)
+https://x.com/YH_0w0/status/1730074907969765709
+
 
 ## AI Usage
 AI assistance (Muse Spark via OpenCode) was used to fix and optimize this project:
