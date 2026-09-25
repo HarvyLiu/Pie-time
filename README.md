@@ -45,22 +45,16 @@ Or bring back the PNG: `Pillow` compress with `Image.save("bg.png", optimize=Tru
 - Python 3.12+
 - `streamlit==1.64.0` (see `requirements.txt`)
 
-## Changelog from rough version
-- Fixed blocking `while True` → `@st.fragment(run_every=0.1)` (`streamlit_app.py:40`)
-- Fixed obfuscated `microsecond/3600000/1000` → `/ 3_600_000_000` (`streamlit_app.py:45`)
-- Fixed background `url("./bg.png")` → base64 `data:` URI with MIME detection (`streamlit_app.py:26-48`)
-- Added `st.set_page_config` (`streamlit_app.py:6-11`), `requirements.txt`, proper `.gitignore`
-- Optimized image 4.7 MB → 377 KB (12× smaller)
 
 ## AI Usage
 AI assistance (Muse Spark via OpenCode) was used to fix and optimize this project:
 
 - Guide the user to learn and write this project
 - Optimized `bg.png` (4.7 MB) → `bg.jpg` (377 KB, 1920×1080 JPEG)
-- Added `requirements.txt`, `st.set_page_config` (`streamlit_app.py:6-11`), expanded `.gitignore` and this README (User had modified afterwards)
+- Added `requirements.txt`, expanded `.gitignore` and 90% this README.
 - Verified via `py_compile`, `ast.parse`, and headless `streamlit run` (health 200)
 
 All changes reviewed and tested locally on windows.
 
 ## License
-MIT — feel free to fork and pie-ify.
+MIT — feel free to fork and pie-ify(?).
