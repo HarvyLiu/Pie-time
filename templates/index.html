@@ -1,0 +1,84 @@
+
+<!-- AI is used here, more like it suggesting, I did fully understand it before I use anything though. Comments are notes I made myself, comments are 100% human made, also most of the JS too, I find the js part easier than others (???)-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pie time! πππ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+    body {
+      {% if bg_data %} /* this is python btw */
+      background: url("data:{{bg_mime}};base64,{{bg_data}}") center/cover fixed;
+      {% else %}
+      background: #f0f0f0;
+      {% endif %}
+      font-family: 'Kalam', cursive;
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+    .card { 
+	background: rgba(255,255,255,0.88);
+	padding: 2rem; 
+	border-radius: 15px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+	text-align: center;
+	min-width: 340px;
+    } 
+    /* I liked the card view in streamlit, migrated it to here*/
+    .metrics {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+    }
+    .metric {
+	background: white;
+	padding: 1rem;
+	border-radius: 10px;
+    }
+    .value {
+	font-size: 1.8rem;
+	font-weight: bold;
+    }
+    .delta { 
+	color: #666;
+	font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Pie time! πππ</h1>
+    <p>Time and date in π units</p>
+    <div class="metrics">
+      <div class="metric"><div>Time now</div><div id="pi-time" class="value">-</div><div id="real-time" class="delta">-</div></div>
+      <div class="metric"><div>Date now</div><div id="pi-date" class="value">-</div><div id="real-date" class="delta">-</div></div>
+    </div>
+    <p id="updated" class="delta"></p>
+  </div>
+<script>
+/* Great, learning some basic js for these here*/
+function update(){ /*def update()*/
+  const now = new Date(); /*datetime.now()*/
+  const dec = now.getHours() + now.getMinutes()/60 + now.getSeconds()/3600 + now.getMilliseconds()/3600000;
+  const piTime = dec / Math.PI;
+  const y = now.getFullYear();
+  const m = now.getMonth() + 1;
+  const d = now.getDate();
+  const piY = y / Math.PI;
+  const piM = m / Math.PI;
+  const piD = d / Math.PI;
+  document.getElementById('pi-time').textContent = piTime.toFixed(2) + 'π';
+  document.getElementById('real-time').textContent = now.toLocaleTimeString();
+  document.getElementById('pi-date').textContent = piY.toFixed(2) + 'π/' + piM.toFixed(2) + 'π/' + piD.toFixed(2) + 'π';
+  document.getElementById('real-date').textContent = y + '/' + String(m).padStart(2,'0') + '/' + String(d).padStart(2,'0');
+}
+setInterval(update, 100); 
+update();
+</script>
+</body>
+</html>
